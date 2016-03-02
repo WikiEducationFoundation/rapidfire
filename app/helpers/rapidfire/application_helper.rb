@@ -11,4 +11,8 @@ module Rapidfire
       answers.include?(option)
     end
   end
+
+  def is_required_question?(answer)
+    answer.question.validation_rules[:presence]
+  end
 end
