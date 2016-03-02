@@ -53,6 +53,7 @@ module Rapidfire
 
     def to_question_params
       {
+        :type => type,
         :question_group => question_group,
         :question_text  => question_text,
         :answer_options => answer_options,
