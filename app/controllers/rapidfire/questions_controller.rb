@@ -3,10 +3,12 @@ module Rapidfire
     before_filter :authenticate_administrator!
 
     before_filter :find_question_group!
-    before_filter :find_question!, :only => [:edit, :update, :destroy]
+    before_filter :find_question!, :only => [:edit, :update, :destroy, :update_position]
 
     def index
-      @questions = @question_group.questions
+      @questions = @question_group.questions.by_position
+      # @question = questions.order('asc')
+      # @questions = @question_group.questions
     end
 
     def new
@@ -27,6 +29,12 @@ module Rapidfire
       form_params = params[:question].merge(:question => @question)
 
       save_and_redirect(form_params, :edit)
+    end
+
+    def update_position
+      @question.insert_at(params[:position].to_i)
+      # binding.pry
+      render nothing: true
     end
 
     def destroy

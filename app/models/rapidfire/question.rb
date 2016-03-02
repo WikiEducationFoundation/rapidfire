@@ -1,12 +1,16 @@
 module Rapidfire
   class Question < ActiveRecord::Base
     belongs_to :question_group, :inverse_of => :questions
+    acts_as_list scope: :question_group
     has_many   :answers
-
-    default_scope { order(:position) }
-
     validates :question_group, :question_text, :presence => true
     serialize :validation_rules
+
+    def self.by_position
+      has_pos = where("position is not null").order('position asc')
+      null_pos = where("position is null")
+      return has_pos+null_pos
+    end
 
     if Rails::VERSION::MAJOR == 3
       attr_accessible :question_group, :question_text, :validation_rules, :answer_options
