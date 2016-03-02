@@ -11,12 +11,4 @@ module Rapidfire
       answers.include?(option)
     end
   end
-
-  def question_type(answer)
-    answer.question.type.to_s.split("::").last.downcase
-  end
-
-  def is_required_question?(answer)
-    answer.question.validation_rules[:presence]
-  end
 end
