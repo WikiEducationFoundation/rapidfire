@@ -4,6 +4,7 @@ module Rapidfire
     acts_as_list scope: :question_group
     has_many   :answers
     validates :question_group, :question_text, :presence => true
+    validate :grouped_question_type
     serialize :validation_rules
 
     def self.by_position
@@ -28,6 +29,13 @@ module Rapidfire
 
     def rules
       validation_rules || {}
+    end
+
+    def grouped_question_type
+      valid_type = ["Rapidfire::Questions::Radio"].exclude? type
+      if rules[:grouped].to_i == 1 && valid_type
+        errors.add(:type, "Must be a Radio type")
+      end
     end
 
     # answer will delegate its validation to question, and question

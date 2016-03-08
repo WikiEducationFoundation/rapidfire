@@ -64,7 +64,7 @@ module Rapidfire
           :grouped_question => answer_grouped_question,
           :minimum  => answer_minimum_length,
           :maximum  => answer_maximum_length,
-          :incremenet    => answer_increment,
+          :increment    => answer_increment,
           :greater_than_or_equal_to => answer_greater_than_or_equal_to,
           :less_than_or_equal_to    => answer_less_than_or_equal_to
         }
