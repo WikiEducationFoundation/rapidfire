@@ -32,9 +32,9 @@ module Rapidfire
     end
 
     def grouped_question_type
-      valid_type = ["Rapidfire::Questions::Radio"].exclude? type
+      valid_type = ["Rapidfire::Questions::Radio", "Rapidfire::Questions::RangeInput"].exclude? type
       if rules[:grouped].to_i == 1 && valid_type
-        errors.add(:type, "Must be a Radio type")
+        errors.add(:type, "Must be a Radio or Range Input type")
       end
     end
 
