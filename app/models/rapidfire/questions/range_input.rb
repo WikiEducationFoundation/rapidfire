@@ -26,14 +26,14 @@ module Rapidfire
       end
 
       def range_attributes
-        if rules[:minimum].empty?
-          errors.add(:miminum, "Please set a minimum value for range")
+        if rules[:range_minimum].empty?
+          errors.add(:range_miminum, "Please set a minimum value for range")
         end
-        if rules[:maximum].empty?
-          errors.add(:maximum, "Please set a maximum value for range")
+        if rules[:range_maximum].empty?
+          errors.add(:range_maximum, "Please set a maximum value for range")
         end
-        if rules[:increment].empty?
-          errors.add(:increment, "Please set an increment for range")
+        if rules[:range_increment].empty?
+          errors.add(:range_increment, "Please set an increment for range")
         end
       end
     end
