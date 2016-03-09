@@ -8,11 +8,14 @@ module Rapidfire
 
     def create
       @answer_group_builder = AnswerGroupBuilder.new(answer_group_params)
-
-      if @answer_group_builder.save
-        redirect_to question_groups_path
-      else
-        render :new
+      respond_to do |format|
+        if @answer_group_builder.save
+          format.html { redirect_to question_groups_path }
+          format.json { render :json => { answer_group: @answer_group_builder, success: true } }
+        else
+          format.html { render :new }
+          format.json { render json: @answer_group_builder.errors, status: :unprocessable_entity }
+        end
       end
     end
 
