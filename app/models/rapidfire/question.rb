@@ -9,7 +9,7 @@ module Rapidfire
 
     def self.by_position
       has_pos = where("position is not null").order('position asc')
-      null_pos = where("position is null")
+      null_pos = where("position is null").order('created_at asc')
       return has_pos+null_pos
     end
 

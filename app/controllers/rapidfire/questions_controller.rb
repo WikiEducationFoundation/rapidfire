@@ -7,8 +7,6 @@ module Rapidfire
 
     def index
       @questions = @question_group.questions.by_position
-      # @question = questions.order('asc')
-      # @questions = @question_group.questions
     end
 
     def new
@@ -17,7 +15,6 @@ module Rapidfire
 
     def create
       form_params = params[:question].merge(:question_group => @question_group)
-
       save_and_redirect(form_params, :new)
     end
 
