@@ -7,8 +7,4 @@ module Rapidfire
       attr_accessible :name
     end
   end
-
-  def reorder_questions
-
-  end
 end
