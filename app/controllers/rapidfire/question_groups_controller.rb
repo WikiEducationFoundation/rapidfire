@@ -68,7 +68,7 @@ module Rapidfire
 
     def question_group_params
       if Rails::VERSION::MAJOR == 4
-        params.require(:question_group).permit(:name, :intro_slide, :final_slide)
+        params.require(:question_group).permit(:name)
       else
         params[:question_group]
       end

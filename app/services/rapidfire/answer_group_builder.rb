@@ -15,6 +15,7 @@ module Rapidfire
       params.each do |question_id, answer_attributes|
         if answer = @answer_group.answers.find { |a| a.question_id.to_s == question_id.to_s }
           text = answer_attributes[:answer_text]
+          answer.follow_up_answer_text = answer_attributes[:follow_up_answer_text]
 
           # in case of checkboxes, values are submitted as an array of
           # strings. we will store answers as one big string separated
@@ -26,6 +27,7 @@ module Rapidfire
             else
               text
             end
+
         end
       end
 

@@ -21,7 +21,7 @@ module Rapidfire
             answers.inject(Hash.new(0)) { |total, e| total[e] += 1; total }
           when Rapidfire::Questions::Short, Rapidfire::Questions::Date,
             Rapidfire::Questions::Long, Rapidfire::Questions::Numeric, Rapidfire::Questions::RangeInput
-            question.answers.pluck(:answer_text)
+            question.answers.pluck(:answer_text, :follow_up_answer_text)
           end
 
         QuestionResult.new(question: question, results: results)
