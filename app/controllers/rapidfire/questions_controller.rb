@@ -27,11 +27,6 @@ module Rapidfire
       save_and_redirect(form_params, :edit)
     end
 
-    def update_position
-      @question.insert_at(params[:position].to_i)
-      render nothing: true
-    end
-
     def destroy
       @question.destroy
       respond_to do |format|

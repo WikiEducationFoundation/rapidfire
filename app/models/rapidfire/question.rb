@@ -13,10 +13,6 @@ module Rapidfire
       return has_pos+null_pos
     end
 
-    def self.for_conditionals(question_group_id)
-      where(conditionals: '', question_group_id: question_group_id)
-    end
-
     if Rails::VERSION::MAJOR == 3
       attr_accessible :question_group, :question_text, :validation_rules, :answer_options
     end
