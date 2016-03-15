@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.summary     = 'Surveys made easy.'
   s.description = 'One stop solution for all survey related requirements! Its tad easy!.'
 
-  s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
+  s.files = Dir['{app,config,db,lib}/**/*', "spec/factories/**/*", 'MIT-LICENSE', 'Rakefile', 'README.md']
   s.test_files = Dir['spec/**/*']
 
   s.post_install_message = <<-PIM
