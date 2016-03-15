@@ -4,14 +4,20 @@ module Rapidfire
       validates :answer_options, :presence => true
 
       def options
-        answer_options.split(Rapidfire.answers_delimiter)
+        options = answer_options.split(Rapidfire.answers_delimiter)
+        options.collect { |o| o.strip }
       end
 
       def validate_answer(answer)
         super(answer)
 
         if rules[:presence] == "1" || answer.answer_text.present?
-          answer.validates_inclusion_of :answer_text, :in => options
+          answers = answer.answer_text.split("\r\n")
+          answers.map do |a|
+            unless options.include?(a)
+              errors.add(:answer_text, "Invalid answer option")
+            end
+          end
         end
       end
     end

@@ -21,7 +21,7 @@ module Rapidfire
 
     attr_accessor :question_group, :question,
       :type, :question_text, :answer_options, :answer_presence,
-      :answer_minimum_length, :answer_maximum_length,
+      :answer_minimum_length, :answer_maximum_length, :multiple,
       :answer_greater_than_or_equal_to, :answer_less_than_or_equal_to, :answer_grouped, :answer_grouped_question,
       :answer_range_minimum, :answer_range_maximum, :answer_range_increment, :follow_up_question_text, :conditionals
 
@@ -62,6 +62,7 @@ module Rapidfire
         :answer_options => answer_options,
         :follow_up_question_text => follow_up_question_text,
         :conditionals => conditionals,
+        :multiple => multiple,
         :validation_rules => {
           :presence => answer_presence,
           :grouped => answer_grouped,
@@ -84,6 +85,7 @@ module Rapidfire
       self.answer_options  = question.answer_options
       self.follow_up_question_text = question.follow_up_question_text
       self.conditionals = question.conditionals
+      self.multiple = question.multiple
       self.answer_presence = question.rules[:presence]
       self.answer_grouped = question.rules[:grouped]
       self.answer_grouped_question = question.rules[:grouped_question]

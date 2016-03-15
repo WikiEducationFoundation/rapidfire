@@ -16,7 +16,6 @@ module Rapidfire
         if answer = @answer_group.answers.find { |a| a.question_id.to_s == question_id.to_s }
           text = answer_attributes[:answer_text]
           answer.follow_up_answer_text = answer_attributes[:follow_up_answer_text]
-
           # in case of checkboxes, values are submitted as an array of
           # strings. we will store answers as one big string separated
           # by delimiter.
@@ -54,7 +53,8 @@ module Rapidfire
     end
 
     def strip_checkbox_answers(text)
-      text.reject(&:blank?).reject { |t| t == "0" }
+      removed_empties = text.reject(&:blank?).reject { |t| t == "0" }
+      return removed_empties.collect { |t| t.strip }
     end
   end
 end
