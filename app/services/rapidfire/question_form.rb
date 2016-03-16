@@ -23,7 +23,7 @@ module Rapidfire
       :type, :question_text, :answer_options, :answer_presence,
       :answer_minimum_length, :answer_maximum_length, :multiple,
       :answer_greater_than_or_equal_to, :answer_less_than_or_equal_to, :answer_grouped, :answer_grouped_question,
-      :answer_range_minimum, :answer_range_maximum, :answer_range_increment, :follow_up_question_text, :conditionals
+      :answer_range_minimum, :answer_range_maximum, :answer_range_increment, :answer_range_divisions, :answer_range_format, :follow_up_question_text, :conditionals
 
     delegate :valid?, :errors, :to => :question
 
@@ -72,6 +72,8 @@ module Rapidfire
           :range_minimum  => answer_range_minimum,
           :range_maximum  => answer_range_maximum,
           :range_increment    => answer_range_increment,
+          :range_divisions    => answer_range_divisions,
+          :range_format    => answer_range_format,
           :greater_than_or_equal_to => answer_greater_than_or_equal_to,
           :less_than_or_equal_to    => answer_less_than_or_equal_to
         }
@@ -94,6 +96,8 @@ module Rapidfire
       self.answer_range_minimum = question.rules[:range_minimum]
       self.answer_range_maximum = question.rules[:range_maximum]
       self.answer_range_increment = question.rules[:range_increment]
+      self.answer_range_divisions = question.rules[:range_divisions]
+      self.answer_range_format = question.rules[:range_format]
       self.answer_greater_than_or_equal_to = question.rules[:greater_than_or_equal_to]
       self.answer_less_than_or_equal_to    = question.rules[:less_than_or_equal_to]
     end
