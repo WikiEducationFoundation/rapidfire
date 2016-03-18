@@ -1,7 +1,8 @@
 module Rapidfire
   module Questions
     class Select < Rapidfire::Question
-      validates :answer_options, :presence => true
+      include Rapidfire::QuestionHelper
+      validate :answer_options_presence
 
       def options
         options = answer_options.split(Rapidfire.answers_delimiter)
