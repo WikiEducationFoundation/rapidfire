@@ -8,9 +8,7 @@ module Rapidfire
     serialize :validation_rules
 
     def self.by_position
-      has_pos = where("position is not null").order('position asc')
-      null_pos = where("position is null").order('created_at asc')
-      return has_pos+null_pos
+      order('position asc')
     end
 
     if Rails::VERSION::MAJOR == 3
