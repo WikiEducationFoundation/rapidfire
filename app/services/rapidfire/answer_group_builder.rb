@@ -26,7 +26,6 @@ module Rapidfire
             else
               text
             end
-
         end
       end
 
@@ -54,7 +53,7 @@ module Rapidfire
 
     def strip_checkbox_answers(text)
       removed_empties = text.reject(&:blank?).reject { |t| t == "0" }
-      return removed_empties.collect { |t| t.strip }
+      removed_empties.collect { |t| t.strip }
     end
   end
 end

@@ -40,7 +40,7 @@ module Rapidfire
     # will inturn add validations on answer on the fly!
     def validate_answer(answer)
 
-      if rules[:presence] == "1"
+      if rules[:presence] == "1" && course_data_type.nil?
         answer.validates_presence_of :answer_text
       end
 
@@ -50,6 +50,7 @@ module Rapidfire
 
         answer.validates_length_of :answer_text, min_max
       end
+
     end
   end
 end

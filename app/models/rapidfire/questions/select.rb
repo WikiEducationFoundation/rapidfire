@@ -11,7 +11,7 @@ module Rapidfire
 
       def validate_answer(answer)
         super(answer)
-
+        return true unless course_data_type.nil?
         if rules[:presence] == "1" || answer.answer_text.present?
           answers = answer.answer_text.split("\r\n")
           answers.map do |a|
