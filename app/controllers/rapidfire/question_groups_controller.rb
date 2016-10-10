@@ -1,6 +1,6 @@
 module Rapidfire
   class QuestionGroupsController < Rapidfire::ApplicationController
-    before_filter :authenticate_administrator!, except: :index
+    before_action :authenticate_administrator!, except: :index
 
     def index
       @question_groups = QuestionGroup.all
