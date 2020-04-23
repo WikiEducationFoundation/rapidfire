@@ -27,7 +27,7 @@ module Rapidfire
 
     def update
       @question_group = QuestionGroup.find(params[:id])
-      @question_group.update_attributes(question_group_params)
+      @question_group.update(question_group_params)
       @question_group.save
       if @question_group.errors.empty?
         respond_to do |format|
