@@ -29,7 +29,7 @@ module Rapidfire
         end
       end
 
-      @answer_group.save!(options)
+      @answer_group.save!(**options)
     end
 
     def save(options = {})
